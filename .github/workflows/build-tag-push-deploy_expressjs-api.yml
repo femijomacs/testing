@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v3
    
    # Login to DockerHub Image Repository
-      - name: Login to Openshift Docker
+      - name: Login to DockerHub
         run: |
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
       
@@ -31,14 +31,14 @@ jobs:
         run: |
           docker image ls 
       
-#       # Tag Docker Image built with latest
-#       - name: Docker Tag Version
-#         run: |
-#           docker tag femi-olaniran-IS27-devops-specialist-competition-req99120_expressjs-api femmyreuben/expressjs-api:latest
+  # Tag Docker Image built with latest
+      - name: Docker Tag Version
+        run: |
+          docker tag femi-olaniran-is27-devops-specialist-competition-req99120_expressjs-api femmyreuben/expressjs-api:latest
 
-#       # Push docker image to BC Gov Repository  
-#       - name: Docker Push Version
-#         run: |
-#           docker push femmyreuben/expressjs-api:latest
+  # Push docker image to DockerHub Repository  
+      - name: Docker Push Version
+        run: |
+          docker push femmyreuben/expressjs-api:latest
 
 

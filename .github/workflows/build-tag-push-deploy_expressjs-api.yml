@@ -17,19 +17,19 @@ jobs:
         uses: actions/checkout@v3
    
    # Login to DockerHub Image Repository
-#       - name: Login to Openshift Docker
-#         run: |
-#           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Login to Openshift Docker
+        run: |
+          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
       
-#       # Build the Expressjs API Application Image via docker-compose
-#       - name: Build the Docker image
-#         run: |
-#           docker-compose build expressjs-api
+   # Build the Expressjs API Application Image via docker-compose
+      - name: Build the Docker image
+        run: |
+          docker-compose build expressjs-api
       
-#       # TROUBLESHOOTING - view images present in github action run
-#       - name: Docker List Images
-#         run: |
-#           docker image ls 
+   # TROUBLESHOOTING - view images present in github action run
+      - name: Docker List Images
+        run: |
+          docker image ls 
       
 #       # Tag Docker Image built with latest
 #       - name: Docker Tag Version

@@ -3,16 +3,13 @@ name: Expressjs-API
 on:
   push:
     branches: [ "main" ]
- #   paths:
- #     - "src/backend/**"
- # workflow_dispatch:
   
 jobs:
   Expressjs-API-Build-Tag-Push:
     runs-on: ubuntu-latest
     steps:
     
-    # Checkout femi-olaniran-IS27-devops-specialist-competition-req99120 Github Repository
+  # Checkout "femi-olaniran-IS27-devops-specialist-competition-req99120" Github Repository
       - name: Checkout Github Repository
         uses: actions/checkout@v3
    
@@ -34,11 +31,11 @@ jobs:
   # Tag Docker Image built with latest
       - name: Docker Tag Version
         run: |
-          docker tag femi-olaniran-is27-devops-specialist-competition-req99120_expressjs-api femmyreuben/expressjs-api:latest
+          docker tag femi-olaniran-is27-devops-specialist-competition-req99120_expressjs-api ${{ secrets.DOCKERHUB_USERNAME }}/expressjs-api:latest
 
   # Push docker image to DockerHub Repository  
       - name: Docker Push Version
         run: |
-          docker push femmyreuben/expressjs-api:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/expressjs-api:latest
 
 

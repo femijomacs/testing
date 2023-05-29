@@ -3,9 +3,9 @@ name: Expressjs-API
 on:
   push:
     branches: [ "main" ]
-    paths:
-      - "src/backend/**"
-  workflow_dispatch:
+ #   paths:
+ #     - "src/backend/**"
+ # workflow_dispatch:
   
 jobs:
   Expressjs-API-Build-Tag-Push:

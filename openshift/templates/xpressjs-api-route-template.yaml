@@ -16,8 +16,6 @@ objects:
     annotations:
       openshift.io/host.generated: 'true'
   spec:
-    #host: expressjs-api-dev.apps
-    #path: /api
     to:
       kind: Service
       name: ${APPLICATION_NAME}

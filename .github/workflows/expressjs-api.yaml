@@ -63,7 +63,6 @@ jobs:
           DC_TEMPLATE: "expressjs-api-dc-template.yaml"
           SERVICE_TEMPLATE: "expressjs-api-service-template.yaml"
           ROUTE_TEMPLATE: "expressjs-api-route-template.yaml"
-          DIR: "api"
           IMAGESTREAM: "expressjs-api"
         run: |
           ./.github/helpers/deploy.sh 

@@ -16,14 +16,14 @@ objects:
     annotations:
       openshift.io/host.generated: 'true'
   spec:
-    host: expressjs-api-dev.apps
-    path: /api
+    #host: expressjs-api-dev.apps
+    #path: /api
     to:
       kind: Service
       name: ${APPLICATION_NAME}
       weight: 100
     port:
-      targetPort: 3000-tcp
+      targetPort: port-tcp-3000
     tls:
       termination: edge
       insecureEdgeTerminationPolicy: Redirect

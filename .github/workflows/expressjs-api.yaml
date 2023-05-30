@@ -37,3 +37,57 @@ jobs:
       - name: Docker Push Version
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/expressjs-api:latest
+   
+
+  deploy-to-dev:
+    runs-on: ubuntu-latest
+    needs: [ Expressjs-API-Build-Tag-Push ]
+    steps:
+    
+      # Checkout code from GitHub Repository
+      - name: Checkout GitHub Repository
+        uses: actions/checkout@v3
+
+      - name: Login to Openshift Cluster
+        uses: redhat-actions/oc-login@v1
+        with: 
+          openshift_server_url: ${{ secrets.OPENSHIFT4_SERVER_URL }}
+          openshift_token: ${{ secrets.OPENSHIFT4_TOKEN }}
+          
+      # Deploy to Dev using helper script "deploy.sh"
+      - name: Deploy to Dev
+        env:
+          NAMESPACE: "${{ secrets.NAMESPACE }}"
+          APPLICATION_NAME: "${{ secrets.APPLICATION_NAME }}"
+          ENVIRONMENT: "${{ secrets.ENVIRONMENT }}"
+          DC_TEMPLATE: "expressjs-api-dc-template.yaml"
+          SERVICE_TEMPLATE: "expressjs-api-service-template.yaml"
+          ROUTE_TEMPLATE: "expressjs-api-route-template.yaml"
+          DIR: "api"
+          IMAGESTREAM: "expressjs-api"
+        run: |
+          ./.github/helpers/deploy.sh 
+  
+  
+  health-check-in-dev:
+    runs-on: ubuntu-latest
+    needs: [ deploy-to-dev ]
+    steps:
+    
+      # Checkout Repository
+      - uses: actions/checkout@v3
+
+      - name: Login to Openshift Silver Cluster
+        uses: redhat-actions/oc-login@v1
+        with: 
+          openshift_server_url: ${{ secrets.OPENSHIFT4_SERVER_URL }}
+          openshift_token: ${{ secrets.OPENSHIFT4_TOKEN }}
+                      
+      # Post deployment monitoring of readiness/liveness probe response using helper script "app_health.sh"
+      - name: Health Check for Dev deployment
+        env:
+          NAMESPACE: "${{ secrets.NAMESPACE }}"
+          APPLICATION_NAME: "${{ secrets.APPLICATION_NAME }}"
+          ENVIRONMENT: "${{ secrets.ENVIRONMENT }}"
+        run: |
+          ./.github/helpers/app-health.sh        

@@ -1,0 +1,47 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: ${APPLICATION_NAME}-route-template
+labels:
+  template: ${APPLICATION_NAME}-route-template
+objects:
+- kind: Route
+  apiVersion: route.openshift.io/v1
+  metadata:
+    name: ${APPLICATION_NAME}
+    namespace: ${ENVIRONMENT}
+    labels:
+      app: ${APPLICATION_NAME}
+      app.kubernetes.io/part-of: ${APPLICATION_NAME}
+    annotations:
+      openshift.io/host.generated: 'true'
+  spec:
+    host: expressjs-api-dev.apps
+    path: /api
+    to:
+      kind: Service
+      name: ${APPLICATION_NAME}
+      weight: 100
+    port:
+      targetPort: 3000-tcp
+    tls:
+      termination: edge
+      insecureEdgeTerminationPolicy: Redirect
+    wildcardPolicy: None
+
+parameters:
+  - description: Application Name
+    displayName: AppName
+    name: APPLICATION_NAME
+    required: true
+    value: 'expressjs-api'
+  - description: Environment
+    displayName: Environment
+    name: ENVIRONMENT
+    required: true
+    value: 'dev'
+  - description: Imagestream
+    displayName: Imagestream
+    name: IMAGESTREAM
+    required: true
+    value: 'expressjs-api'

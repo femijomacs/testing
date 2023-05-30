@@ -18,6 +18,9 @@ objects:
     from:
       kind: DockerImage
       name: docker.io/femmyreuben/${APPLICATION_NAME}:latest
+    importPolicy:
+      scheduled: true
+      importIfNotPresent: false
 - kind: DeploymentConfig
   apiVersion: apps.openshift.io/v1
   metadata:
@@ -89,7 +92,7 @@ objects:
               periodSeconds: 10
               successThreshold: 1
               failureThreshold: 3
-            image: femmyreuben/expressjs-api:latest
+            image: docker.io/femmyreuben/expressjs-api:latest
             ports:
               - containerPort: 3000
                 protocol: TCP

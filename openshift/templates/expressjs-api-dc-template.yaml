@@ -5,6 +5,19 @@ metadata:
 labels:
   template: ${APPLICATION_NAME}-template
 objects:
+- kind: ImageStreamTag
+  apiversion: v1
+  metadata:
+    annotations:
+       openshift.io/generated-by: OpenShiftWebConsole
+    name: '${IMAGESTREAM}:latest'
+    namespace: ${ENVIRONMENT}
+  spec:
+    tag:
+      name: latest
+    from:
+      kind: DockerImage
+      name: docker.io/femmyreuben/${APPLICATION_NAME}:latest
 - kind: DeploymentConfig
   apiVersion: apps.openshift.io/v1
   metadata:
@@ -36,10 +49,8 @@ objects:
             - ${APPLICATION_NAME}
           from:
             kind: ImageStreamTag
-            namespace: ${ENVIRONMENT}-tools
+            namespace: ${ENVIRONMENT}
             name: '${IMAGESTREAM}:latest'
-          lastTriggeredImage: >-
-            femmyreuben/expressjs-api:latest
       - type: ConfigChange
     replicas: 1
     revisionHistoryLimit: 10

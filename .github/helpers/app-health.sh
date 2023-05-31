@@ -1,5 +1,5 @@
-# bash script to watch deployment of dc in a given namespace to ensure it is healthy and live
+# bash script to watch deployment of dc in dev namespace to ensure it is healthy and live
 
 #!/bin/bash
 
-oc rollout status -n $NAMESPACE dc/$APPLICATION_NAME --watch
+oc rollout status -n dev dc/$APPLICATION_NAME --watch

@@ -54,7 +54,7 @@ objects:
           containerNames:
             - ${APPLICATION_NAME}
           from:
-            kind: ImageStreamTag
+            kind: ImageStream
             namespace: ${ENVIRONMENT}
             name: '${IMAGESTREAM}:latest'
       - type: ConfigChange

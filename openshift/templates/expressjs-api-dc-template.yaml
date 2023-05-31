@@ -95,7 +95,7 @@ objects:
               periodSeconds: 10
               successThreshold: 1
               failureThreshold: 3
-            image: docker.io/femmyreuben/expressjs-api:latest
+            image: ${IMAGESTREAM}:latest
             ports:
               - containerPort: 3000
                 protocol: TCP

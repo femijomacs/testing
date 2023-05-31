@@ -21,7 +21,7 @@ objects:
       name: ${APPLICATION_NAME}
       weight: 100
     port:
-      targetPort: port-tcp-3000
+      targetPort: 3000-tcp
     #tls:
       #termination: edge
       #insecureEdgeTerminationPolicy: Redirect

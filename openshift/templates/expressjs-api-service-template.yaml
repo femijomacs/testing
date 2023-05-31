@@ -19,7 +19,7 @@ objects:
     ipFamilies:
       - IPv4
     ports:
-      - name: port-tcp-3000
+      - name: 3000-tcp
         protocol: TCP
         port: 3000
         targetPort: 3000

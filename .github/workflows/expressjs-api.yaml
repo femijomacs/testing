@@ -53,7 +53,7 @@ jobs:
         with: 
           openshift_server_url: ${{ secrets.OPENSHIFT4_SERVER_URL }}
           openshift_token: ${{ secrets.OPENSHIFT4_TOKEN }}
-          args: --insecure-skip-tls-verify
+          args: --insecure_skip_tls_verify
           
       # Deploy to Dev using helper script "deploy.sh"
       - name: Deploy to Dev
@@ -83,7 +83,7 @@ jobs:
         with: 
           openshift_server_url: ${{ secrets.OPENSHIFT4_SERVER_URL }}
           openshift_token: ${{ secrets.OPENSHIFT4_TOKEN }}
-          args: --insecure-skip-tls-verify
+          args: --insecure_skip_tls_verify
                       
       # Post deployment monitoring of readiness/liveness probe response using helper script "app_health.sh"
       - name: Health Check for Dev deployment

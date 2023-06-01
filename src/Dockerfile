@@ -12,14 +12,14 @@ WORKDIR /app
 COPY src/backend/. .
 RUN npm i
 
-# Twindle the permissions to ensure things can be run as an arbitary user
+# Assign the app working directory to a user and change the permissions to ensure things can be run as an arbitrary user
 RUN chown -R 1001:0 /app && \
     chmod -R ug+rwx /app
 
 # Provide access to node for adding logs
 RUN mkdir -p /.npm && chown -R 1001:0 /.npm && chmod -R ug+rwx /.npm
 
-# Create and set user
+# Create and set a user to avoid using root user
 USER 1001
 
 # Entrypoint

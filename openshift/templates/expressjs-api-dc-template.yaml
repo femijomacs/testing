@@ -8,9 +8,6 @@ objects:
 - kind: DeploymentConfig
   apiVersion: apps.openshift.io/v1
   metadata:
-    annotations:
-      app.openshift.io/route-disabled: 'false'
-      openshift.io/generated-by: OpenShiftWebConsole
     name: ${APPLICATION_NAME}
     namespace: ${ENVIRONMENT}
     labels:
@@ -42,7 +39,7 @@ objects:
       spec:
         containers:
           - name: ${APPLICATION_NAME}
-            image: femmyreuben/${IMAGESTREAM}:latest
+            image: femmyreuben/${IMAGESTREAM}:${IMAGETAG}
             ports:
               - containerPort: 3000
                 protocol: TCP
@@ -78,7 +75,7 @@ objects:
                 - ${APPLICATION_NAME}
               from:
                 kind: DockerImage
-                name: femmyreuben/${IMAGESTREAM}:latest
+                name: femmyreuben/${IMAGESTREAM}:${IMAGETAG}
           - type: ConfigChange
         restartPolicy: Always
         terminationGracePeriodSeconds: 30

@@ -2,7 +2,7 @@
 
 ## Project Structure
 
-This structure diagram show all directories and specific files of interest. It captures ALL files present in the architecture of this project.
+This structure diagram show all directories and specific files of interest. It captures ALL files present in the architecture of this project except for 'docs directory', where the name of each file explains its purpose.
 
     .
     ├── .github                                      # Contains GitHub Actions Related sources
@@ -16,7 +16,7 @@ This structure diagram show all directories and specific files of interest. It c
     |   ├── auto-action-config.yaml                  # It was given with the Assignment - It shows list of reviewers to be added to pull requests
     ├── docs                                         # Relevant Documentation showing the results of the assignment
     ├── openshift                                    # Openshift Object Repository - Directory containing k8s artifacts
-    |   ├── templates                                # Directory containing k8s artifacts related to processing and deploying api containers to dev environment
+    |   ├── templates                                # Directory containing k8s artifacts related to processing and deploying api containers to dev namespace
     |   |   ├── expressjs-api-dc-template.yaml       # Template for the deploymentconfig creation
     |   |   ├── expressjs-api-route-template.yaml    # Template for the route creation
     |   |   ├── expressjs-api-service-template.yaml  # Template for the service creation
@@ -26,6 +26,7 @@ This structure diagram show all directories and specific files of interest. It c
     |   |   ├── index.js                             #
     |   |   ├── package-lock.json                    #
     |   |   ├── package.json                         #
+    |   ├── Dockerfile                               # Dockerfile used to build docker image
     |   ├── package-lock.json                        # API dependency locking
     ├── .gitignore                                   # list of files that are omitted from commits to this repository
     ├── README.md                                    # This is the document you are reading right now!

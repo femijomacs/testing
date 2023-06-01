@@ -13,8 +13,8 @@ objects:
     labels:
       app: ${APPLICATION_NAME}
       app.kubernetes.io/part-of: ${APPLICATION_NAME}
-    annotations:
-      openshift.io/host.generated: 'true'
+    #annotations:
+      #openshift.io/host.generated: 'true'
   spec:
     to:
       kind: Service

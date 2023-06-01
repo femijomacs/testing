@@ -13,8 +13,8 @@ objects:
     labels:
       app: ${APPLICATION_NAME}
       app.kubernetes.io/part-of: ${APPLICATION_NAME}
-    annotations:
-      openshift.io/generated-by: OpenShiftWebConsole
+    #annotations:
+      #openshift.io/generated-by: OpenShiftWebConsole
   spec:
     ipFamilies:
       - IPv4

@@ -47,9 +47,9 @@ To setup project specific docker containers, first make sure you have Docker Des
 
 ### Services
 
-API -> accessible at [http://localhost:3000/api](http://localhost:3000/api)
+API -> accessible at [http://localhost:3000/api](http://localhost:3000/api) or on CLI use the command: 'curl http://localhost:3000/api'
 
-API -> accessible at [http://localhost:3000/api/health](http://localhost:3000/api/health)
+API -> accessible at [http://localhost:3000/api/health](http://localhost:3000/api/health) or on CLI use the command: 'curl http://localhost:3000/api/health'
 
 ### Teardown Built Docker Resources
 

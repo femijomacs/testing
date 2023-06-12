@@ -87,6 +87,7 @@ objects:
               from:
                 kind: DockerImage
                 name: femmyreuben/${IMAGESTREAM}:${IMAGETAG}
+              lastTriggeredImage: ""
           - type: ConfigChange
         restartPolicy: Always
         terminationGracePeriodSeconds: 30

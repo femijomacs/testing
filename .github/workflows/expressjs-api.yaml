@@ -31,7 +31,7 @@ jobs:
    # Tag Docker Image built with latest
       - name: Docker Tag Version
         run: |
-          docker tag femi-olaniran-is27-devops-specialist-competition-req99120_expressjs-api ${{ secrets.DOCKERHUB_USERNAME }}/expressjs-api:latest
+          docker tag testing_expressjs-api ${{ secrets.DOCKERHUB_USERNAME }}/expressjs-api:latest
 
   # Push docker image to DockerHub Repository  
       - name: Docker Push Version

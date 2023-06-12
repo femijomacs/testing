@@ -1,5 +1,5 @@
 # Pull from Base Image
-FROM node:18.12.1-bullseye-slim
+FROM node:20-bullseye-slim
 
 # Install/Update Node.js and Node Package Manager
 RUN apt-get update && \

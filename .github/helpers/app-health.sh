@@ -2,4 +2,4 @@
 
 #!/bin/bash
 
-oc rollout status -n dev dc/$APPLICATION_NAME --watch
+oc rollout status -n femmyreuben-dev dc/$APPLICATION_NAME --watch

@@ -34,7 +34,7 @@ objects:
             - ${APPLICATION_NAME}
           from:
             kind: ImageStreamTag
-            name: ${APPLICATION_NAME}:latest
+            name: femmyreuben/${APPLICATION_NAME}:latest
           lastTriggeredImage: ""
     replicas: 1
     revisionHistoryLimit: 10

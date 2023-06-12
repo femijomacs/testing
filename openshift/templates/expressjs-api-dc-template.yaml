@@ -33,7 +33,7 @@ objects:
           containerNames:
             - ${APPLICATION_NAME}
           from:
-            kind: ImageStreamTag
+            kind: DockerImage   #ImageStreamTag
             name: femmyreuben/${APPLICATION_NAME}:latest
           lastTriggeredImage: ""
     replicas: 1

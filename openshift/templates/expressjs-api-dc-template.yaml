@@ -23,19 +23,6 @@ objects:
         timeoutSeconds: 600
         maxUnavailable: 25%
         maxSurge: 25%
-      resources: {}
-      activeDeadlineSeconds: 21600
-#     triggers:
-#       - type: ConfigChange
-#       - type: ImageChange
-#         imageChangeParams:
-#           automatic: true
-#           containerNames:
-#             - ${APPLICATION_NAME}
-#           from:
-#             kind: DockerImage   #ImageStreamTag
-#             name: femmyreuben/${APPLICATION_NAME}:latest 
-          #lastTriggeredImage: ""
     replicas: 1
     revisionHistoryLimit: 10
     test: false
@@ -50,7 +37,7 @@ objects:
       spec:
         containers:
           - name: ${APPLICATION_NAME}
-            image: femmyreuben/${IMAGESTREAM}:${IMAGETAG}
+            image: docker.io/femmyreuben/${IMAGESTREAM}:${IMAGETAG}
             ports:
               - containerPort: 3000
                 protocol: TCP
@@ -85,8 +72,8 @@ objects:
               containerNames:
                 - ${APPLICATION_NAME}
               from:
-                kind: DockerImage
-                name: femmyreuben/${IMAGESTREAM}:${IMAGETAG}
+                kind: ImageStreamTag
+                name: ${IMAGESTREAM}:${IMAGETAG}
               lastTriggeredImage: ""
           - type: ConfigChange
         restartPolicy: Always

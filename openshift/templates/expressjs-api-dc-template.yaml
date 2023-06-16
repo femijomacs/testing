@@ -5,23 +5,23 @@ metadata:
 labels:
   template: ${APPLICATION_NAME}-template
 objects:
-- kind: ImageStream
-  apiVersion: image.openshift.io/v1
-  metadata:
-    name: ${APPLICATION_NAME}
-    namespace: ${ENVIRONMENT}
-- kind: ImageStreamTag
-  apiVersion: image.openshift.io/v1
-  metadata:
-    name: ${APPLICATION_NAME}:latest
-    namespace: ${ENVIRONMENT}
-  spec:
-    referencePolicy:
-      type: Source
-    tag:
-      from:
-        kind: DockerImage
-        name: femmyreuben/expressjs-api:latest
+# - kind: ImageStream
+#   apiVersion: image.openshift.io/v1
+#   metadata:
+#     name: ${APPLICATION_NAME}
+#     namespace: ${ENVIRONMENT}
+# - kind: ImageStreamTag
+#   apiVersion: image.openshift.io/v1
+#   metadata:
+#     name: ${APPLICATION_NAME}:latest
+#     namespace: ${ENVIRONMENT}
+#   spec:
+#     referencePolicy:
+#       type: Source
+#     tag:
+#       from:
+#         kind: DockerImage
+#         name: femmyreuben/expressjs-api:latest
 
 - kind: DeploymentConfig
   apiVersion: v1

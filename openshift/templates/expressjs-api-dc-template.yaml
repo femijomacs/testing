@@ -25,6 +25,17 @@ objects:
         maxSurge: 25%
       resources: {}
       activeDeadlineSeconds: 21600    
+    triggers:
+          - type: ImageChange
+            imageChangeParams:
+              automatic: true
+              containerNames:
+                - ${APPLICATION_NAME}
+              from:
+                kind: DockerImage
+                name: femmyreuben/${IMAGESTREAM}:${IMAGETAG}
+              lastTriggeredImage: ""
+          - type: ConfigChange
     replicas: 1
     revisionHistoryLimit: 10
     test: false
@@ -67,17 +78,7 @@ objects:
             terminationMessagePath: /dev/termination-log
             terminationMessagePolicy: File
             imagePullPolicy: Always
-        triggers:
-          - type: ImageChange
-            imageChangeParams:
-              automatic: true
-              containerNames:
-                - ${APPLICATION_NAME}
-              from:
-                kind: DockerImage
-                name: femmyreuben/${IMAGESTREAM}:${IMAGETAG}
-              #lastTriggeredImage: ""
-          - type: ConfigChange
+        
         restartPolicy: Always
         terminationGracePeriodSeconds: 30
         dnsPolicy: ClusterFirst

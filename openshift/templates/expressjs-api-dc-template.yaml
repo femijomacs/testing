@@ -5,6 +5,24 @@ metadata:
 labels:
   template: ${APPLICATION_NAME}-template
 objects:
+- kind: ImageStream
+  apiVersion: image.openshift.io/v1
+  metadata:
+    name: ${APPLICATION_NAME}
+    namespace: ${ENVIRONMENT}
+- kind: ImageStreamTag
+  apiVersion: image.openshift.io/v1
+  metadata:
+    name: ${APPLICATION_NAME}:latest
+    namespace: ${ENVIRONMENT}
+  spec:
+    referencePolicy:
+      type: Source
+    tag:
+      from:
+        kind: DockerImage
+        name: femmyreuben/expressjs-api:latest
+
 - kind: DeploymentConfig
   apiVersion: v1
   metadata:
@@ -33,7 +51,7 @@ objects:
                 - ${APPLICATION_NAME}
               from:
                 kind: ImageStreamTag   #DockerImage
-                namespace: femmyreuben-dev
+                namespace: ${ENVIRONMENT}
                 name: ${IMAGESTREAM}:latest  #femmyreuben/${IMAGESTREAM}:${IMAGETAG}
               lastTriggeredImage: ""
           - type: ConfigChange
@@ -97,7 +115,7 @@ parameters:
     displayName: Environment
     name: ENVIRONMENT
     required: true
-    value: dev
+    value: femmyreuben-dev
   - description: Imagestream
     displayName: Imagestream
     name: IMAGESTREAM

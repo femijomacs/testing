@@ -32,8 +32,8 @@ objects:
               containerNames:
                 - ${APPLICATION_NAME}
               from:
-                kind: DockerImage
-                name: femmyreuben/${IMAGESTREAM}:${IMAGETAG}
+                kind: ImageStream   #DockerImage
+                name: ${IMAGESTREAM}:${IMAGETAG}  #femmyreuben/${IMAGESTREAM}:${IMAGETAG}
               lastTriggeredImage: ""
           - type: ConfigChange
     replicas: 1

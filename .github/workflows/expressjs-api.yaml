@@ -31,12 +31,12 @@ jobs:
    # Tag Docker Image built with latest
       - name: Docker Tag Version
         run: |
-          docker tag testing_expressjs-api ${{ secrets.DOCKERHUB_USERNAME }}/expressjs-api:latest
+          docker tag testing_expressjs-api ${{ secrets.DOCKERHUB_USERNAME }}/expressjs-api:v1
 
   # Push docker image to DockerHub Repository  
       - name: Docker Push Version
         run: |
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/expressjs-api:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/expressjs-api:v1
    
 
   deploy-to-dev:

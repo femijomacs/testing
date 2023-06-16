@@ -32,8 +32,9 @@ objects:
               containerNames:
                 - ${APPLICATION_NAME}
               from:
-                kind: ImageStream   #DockerImage
-                name: ${IMAGESTREAM}:${IMAGETAG}  #femmyreuben/${IMAGESTREAM}:${IMAGETAG}
+                kind: ImageStreamTag   #DockerImage
+                namespace: femmyreuben-dev
+                name: ${IMAGESTREAM}:latest  #femmyreuben/${IMAGESTREAM}:${IMAGETAG}
               lastTriggeredImage: ""
           - type: ConfigChange
     replicas: 1
@@ -50,7 +51,7 @@ objects:
       spec:
         containers:
           - name: ${APPLICATION_NAME}
-            image: femmyreuben/${IMAGESTREAM}:${IMAGETAG}
+            image: docker.io/femmyreuben/${IMAGESTREAM}:${IMAGETAG}
             ports:
               - containerPort: 3000
                 protocol: TCP

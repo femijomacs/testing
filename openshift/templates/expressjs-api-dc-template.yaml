@@ -103,4 +103,4 @@ parameters:
     displayName: Imagetag
     name: IMAGETAG
     required: true
-    value: 'latest'
+    value: 'v1'

@@ -67,16 +67,16 @@ objects:
             terminationMessagePath: /dev/termination-log
             terminationMessagePolicy: File
             imagePullPolicy: Always
-        triggers:
-          - type: ImageChange
-            imageChangeParams:
-              automatic: true
-              containerNames:
-                - ${APPLICATION_NAME}
-              from:
-                kind: DockerImage
-                name: femmyreuben/${IMAGESTREAM}:${IMAGETAG}
-          - type: ConfigChange
+        # triggers:
+        #   - type: ImageChange
+        #     imageChangeParams:
+        #       automatic: true
+        #       containerNames:
+        #         - ${APPLICATION_NAME}
+        #       from:
+        #         kind: DockerImage
+        #         name: femmyreuben/${IMAGESTREAM}:${IMAGETAG}
+        #   - type: ConfigChange
         restartPolicy: Always
         terminationGracePeriodSeconds: 30
         dnsPolicy: ClusterFirst
